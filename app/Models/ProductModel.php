@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class ProductModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'products';
+    protected $table            = 'table_products';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['ProductName','ProductDescription','ProductCategory','ProductQuantity','ProductPrice'];
 
     // Dates
     protected $useTimestamps = false;
