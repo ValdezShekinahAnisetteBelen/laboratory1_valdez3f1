@@ -8,7 +8,7 @@ class ProductCategoryModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'table_category';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'ProductCategory';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;

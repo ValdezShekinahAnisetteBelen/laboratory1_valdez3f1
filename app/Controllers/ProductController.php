@@ -10,10 +10,11 @@ use App\Models\ProductCategoryModel;
 class ProductController extends BaseController
 {
     private $productmodel;
-    private $product1;
+    private $categoryModel;
     public function __construct()
     {
         $this->productmodel = new \App\Models\ProductModel();
+        $this->categoryModel = new \App\Models\ProductCategoryModel();
       
     }
     public function delete($ProductID)
@@ -34,7 +35,6 @@ class ProductController extends BaseController
         return view('products', $data);
     }
 
-
     public function save()
     {
         $ProductID = $_POST['ProductID'];
@@ -54,6 +54,24 @@ class ProductController extends BaseController
         }
         return redirect()->to('/product');
     }
+   
+
+
+   public function saveCategory()
+{
+    $newCategory = $this->request->getVar('NewProductCategory');
+
+    // Insert the new category into the ProductCategoryModel
+    if (!empty($newCategory)) {
+        $data = [
+            'ProductCategory' => $newCategory,
+        ];
+        $this->categoryModel->insert($data);
+    }
+
+    return redirect()->to('/product');
+}
+
     public function product($product)
     {
         echo $product;

@@ -19,6 +19,13 @@
             max-width: 800px; /* Set a max width for content */
         }
 
+        /* Border styles for forms */
+        .form-border {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
         .form-group {
             margin-bottom: 20px; /* Space between form elements */
         }
@@ -37,7 +44,9 @@
 </head>
 <body>
     <div class="container mt-4">
-        <form action="/save" method="post">
+        <!-- Product Form -->
+        <form action="/save" method="post" class="form-border">
+            <h2>Product Form</h2>
             <div class="form-group">
                 <input type="hidden" name="ProductID" value="<?= isset($pro['ProductID']) ? $pro['ProductID'] : '' ?>">
             </div>
@@ -61,21 +70,36 @@
             </div>
             <div class="form-group">
                 <label>ProductQuantity</label>
-                <input type="number" class="form-control" name="ProductQuantity" placeholder="ProductQuantity" value="<?= isset($pro['ProductQuantity']) ? $pro['ProductQuantity'] : '' ?>" required>
+                <input type="number" class="form-control" name="ProductQuantity" placeholder="ProductQuantity" value="<?= isset($pro['ProductQuantity']) ? $pro['ProductQuantity'] : '' ?>">
             </div>
             <div class="form-group">
                 <label>ProductPrice</label>
-                <input type="number" step="0.01" class="form-control" name="ProductPrice" placeholder="ProductPrice" value="<?= isset($pro['ProductPrice']) ? $pro['ProductPrice'] : '' ?>" required>
+                <input type="number" step="0.01" class="form-control" name="ProductPrice" placeholder="ProductPrice" value="<?= isset($pro['ProductPrice']) ? $pro['ProductPrice'] : '' ?>">
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Save">
+                <input type="submit" class="btn btn-primary" value="Save Product">
+            </div>
+        </form>
+
+        <!-- Product Category Form -->
+        <form action="/saveCategory" method="post" class="form-border">
+            <h2>Product Category Form</h2>
+            
+            <div class="form-group">
+                <label>New Product Category</label>
+                <input type="text" class="form-control" name="NewProductCategory" placeholder="New Product Category">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Save Category">
             </div>
         </form>
 
         <h1 class="mt-4 bg-purple text-center p-2">Product Listing</h1>
+        <!-- Product Listing -->
         <?php foreach ($product as $pr): ?>
             <ul class="mb-4">
                 <li>
+                    <!-- Display product details here -->
                     <strong>ProductName:</strong> <?= esc($pr['ProductName']) ?><br>
                     <strong>ProductDescription:</strong> <?= esc($pr['ProductDescription']) ?><br>
                     <strong>ProductCategory:</strong> <?= esc($pr['ProductCategory']) ?><br>
